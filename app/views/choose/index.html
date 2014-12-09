@@ -1,0 +1,29 @@
+{{<layouts/1-column}}
+
+	{{$h1}}What do you want to do?{{/h1}}
+
+	{{$column-1}}
+		<form>
+			 <fieldset class="route">
+                <p class="form-group form-group-compound" id="dart-boolean">
+                     <label class="block-label" for="checkbox-1">
+		            <input id="checkbox-1" type="checkbox" value="change-v5c" name="what-do-you-want-to-do" >
+		            Change the address on my v5c
+		          </label>
+                    <label class="block-label" for="checkbox-2">
+		            <input id="checkbox-2" type="checkbox" value="change-licence" name="what-do-you-want-to-do">
+                        Change the address on my driving licence
+                    </label>
+              </fieldset>
+			<p><button class="button" id="next" type="submit">Next</button></p>
+		</form>
+	{{/column-1}}
+
+
+	{{$pageScript}}
+
+  <script type="text/javascript" src="/public/javascripts/app.js"></script>
+
+	{{/pageScript}}
+
+{{/layouts/1-column}}

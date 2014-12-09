@@ -68,6 +68,11 @@ module.exports = function(grunt){
         files: ['app/assets/sass/**/*.scss'],
         tasks: ['sass'],
         options: { nospawn: true }
+      },
+      js: {
+        files: ['app/assets/javascripts/**.js'],
+        tasks: ['copy:assets'],
+        options: { nospawn: true }
       }
     },
 

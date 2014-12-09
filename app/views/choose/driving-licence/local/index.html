@@ -1,0 +1,88 @@
+{{<layouts/1-column}}
+
+	{{$h1}}Local resident discount{{/h1}}
+
+	{{$column-1}}
+         <p>
+            Local resident discount can be applied to only one car per resident per account. More cars can be added by logging into your account, standard rates will be applied to other cards.
+        </p>
+		<form>
+			<fieldset>
+				<div class="form-group-compound" id="discount-boolean">
+                    
+                        <label class="block-label" for="crossings-limited">
+    						<input id="crossings-limited" type="radio" name="discount-group" value="limited">
+    						Limited
+    					</label>
+                        <p class="panel-inline-indent">
+                            £10 per year for 50 crossings then 20p per crossing. You will be notified when few crossings are left on your account to make an additional payment.
+                        </p>
+                   
+                   
+                        <label class="block-label" for="crossings-unlimited">
+                            <input id="crossings-unlimited" type="radio" name="discount-group" value="Unlimited">
+                            Unlimited
+                        </label>
+                        <p class="panel-inline-indent"> 
+                            £20 per year. You will be notified when you are close to your discount expiration date to renew
+                        </p>
+                    
+				</div>
+			</fieldset>
+            <div class="form-group">
+                <label class="form-checkbox" for="apply-later">
+                    <input id="terms-conditions" type="checkbox" value="terms-conditions">
+                    I accept the Terms and Conditions
+                </label>
+            </div>
+			<p>
+                <button class="button" disabled="disabled" id="next" type="submit">Save and continue</button>
+            </p>
+		</form>
+	{{/column-1}}
+
+	{{$js-functions}}
+		testNext = function() {
+			if ((el.crossingsLimited.checked || el.crossingsUnlimited.checked) && el.termsConditions.checked) {
+				setDisabled(el.buttonNext, false);
+			} else {
+				setDisabled(el.buttonNext, true);
+			}
+		}
+	{{/js-functions}}
+
+	{{$js-initialisation}}
+		init = function() {
+			if (window.location.search.match(/=debug/)) {
+				el.body.classList.add('debug');
+			}
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode == 13 || e.which == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+			el.buttonNext.addEventListener('click', function(e) {
+				e.preventDefault();
+                window.location = './local/residency-proof';
+			});
+			el.discountBoolean.addEventListener('click', function() {
+				testNext();
+			}, false);
+            el.termsConditions.addEventListener('click', function() {
+                testNext();
+            }, false);
+		}
+	{{/js-initialisation}}
+
+	{{$js-objects}}
+		el = {
+			buttonNext: $('#next'),
+			crossingsLimited: $('#crossings-limited'),
+			crossingsUnlimited: $('#crossings-unlimited'),
+			discountBoolean: $('#discount-boolean'),
+            termsConditions: $('#terms-conditions')
+		}
+	{{/js-objects}}
+
+{{/layouts/1-column}}

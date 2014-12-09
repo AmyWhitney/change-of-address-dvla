@@ -1,43 +1,27 @@
 // Forms
 // ==========================================================================
 
+// Form layout
+fieldset,
+legend {
+  width: 100%;
+  float: left;
+  clear: both;
+}
+
 // Form group is used to wrap label and input pairs
 .form-group {
   float: left;
   width: 100%;
   clear: both;
   @include contain-floats;
-  margin-bottom: $gutter-half;
   @include media(tablet) {
-    margin-bottom: $gutter;
-  }
-}
-
-.form-group-related {
-  margin-bottom: 10px;
-  @include media(tablet) {
-    margin-bottom: 20px;
+    margin-bottom: ($gutter*1.5);
   }
 }
 
 .form-group-compound {
   margin-bottom: 10px;
-}
-
-// Fieldset is used to group more than one .form-group
-fieldset {
-  width: 100%;
-  float: left;
-  clear: both;
-}
-
-
-// Form title
-.form-title {
-  margin-bottom: $gutter;
-  @include media(tablet) {
-    margin-bottom: ($gutter*1.5);
-  }
 }
 
 
@@ -47,48 +31,26 @@ fieldset {
 .form-label {
   @include core-19;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
-.form-label-bold {
-  @include bold-24;
-  display: block;
-  margin-bottom: 0;
-  .form-hint {
-    @include core-19;
-  }
-}
-
-// Used for paragraphs in-between form elements
+// Used for paragraphs i n-between forms
 .form-block {
   float: left;
   width: 100%;
   @include contain-floats;
 }
 
-
-// Hints
-
-// Form hints & examples are light grey and sit above a form control
-.form-hint {
-  display: block;
-  color: $secondary-text-colour;
-  margin-bottom: 5px;
-  @include media (tablet) {
-    margin-top: 8px;
-  }
-}
-
-
 // Form controls
 
 // By default, form controls are 50% width for desktop,
 // and 100% width for mobile
 .form-control {
-  @include core-19;
-
   width: 100%;
-  @include box-sizing(border-box);
+  box-sizing: border-box;
+
+  font-size: 1em;
+
   padding: 4px;
   background-color: $white;
   border: 1px solid $border-colour;
@@ -101,7 +63,6 @@ fieldset {
     width: 50%;
   }
 }
-
 
 // Form control widths
 .form-control-3-4 {
@@ -119,11 +80,27 @@ fieldset {
 }
 
 .form-control-1-4 {
-  width: 25%;
+  width: 100%;
+  @include media(tablet) {
+    width: 25%;
+  }
 }
 
 .form-control-1-8 {
-  width: 12.5%;
+  width: 100%;
+  @include media(tablet) {
+    width: 12.5%;
+  }
+}
+
+// Hints
+
+// Form hints & examples are light grey and sit above a form control
+.form-hint {
+  display: block;
+  color: $secondary-text-colour;
+  margin-top: 8px;
+  margin-bottom: 5px;
 }
 
 
@@ -148,18 +125,12 @@ fieldset {
   margin: -2px 5px 0 0;
 }
 
-// Buttons
-.form .button {
-  @include media(mobile) {
-    width: 100%;
-  }
-}
-
 
 // Form validation
 @import "forms/form-validation";
 
 
 // Form patterns
-@import "forms/form-date";
-@import "forms/form-block-labels";
+@import "forms/form-date-of-birth";
+
+@import "forms/form-chunky-labels";
